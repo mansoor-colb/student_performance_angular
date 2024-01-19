@@ -1,0 +1,36 @@
+
+
+<div class="sidebar" [class.open]="isOpen">
+  <div class="logo-details">
+    <i class='bx bx-lock-open-alt'></i>
+      <div class="logo_name">Student</div>
+      
+      <i class='bx bx-menu' id="btn"  (click)="toggleSidebar()"></i>
+  </div>
+  <ul class="nav-list">
+    <li>
+      <a  routerLink="user-dash"  routerLinkActive="active">
+        <i class='bx bx-grid-alt'></i>
+        <span class="links_name">Dashboard</span>
+      </a>
+       <span class="tooltip">Dashboard</span>
+    </li>
+
+   <li>
+    <a (click)="logout()" >
+      <i class='bx bx-log-out-circle'></i>
+      <span class="links_name">Logout</span>
+    </a>
+    <span class="tooltip">Logout</span>
+  </li>
+  
+  </ul>
+</div>
+<section class="home-section">
+    <div class="text">{{outurl}}</div>
+    <div class="dispcontainer">
+      <router-outlet></router-outlet>
+
+    </div>
+</section>
+

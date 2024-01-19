@@ -1,0 +1,51 @@
+/* .active {
+  background-color: #1678da !important;
+  color: white !important;
+  --bs-nav-tabs-link-active-border-color: #1678da #1678da #ededed  !important;
+}
+
+.nav-tabs {
+  --bs-nav-tabs-border-width: 2px !important;
+  --bs-nav-tabs-border-color: #1678da !important;
+  --bs-nav-tabs-border-radius: 0.375rem;
+} */
+/* .container {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #e74c3c;
+}
+
+p {
+  color: #333;
+  font-size: 18px;
+}
+ */
+ .container{
+  position: absolute;
+  right: 30px;
+}
+.message{
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  color: rgb(255, 78, 78);
+  font-weight: 500;
+  position: absolute;
+  top: 230px;
+  left: 40px;
+}
+.message2{
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #11101d;
+  font-weight: 300;
+  width: 360px;
+  position: absolute;
+  top: 280px;
+  left: 40px;
+}

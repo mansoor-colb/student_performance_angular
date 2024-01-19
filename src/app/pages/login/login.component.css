@@ -1,0 +1,134 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  width: 100vh;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  margin-top: 150px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgb(130, 106, 251);
+}
+.form button:hover {
+  background: rgb(88, 56, 250);
+}
+
+
+button:disabled:hover{
+    cursor: not-allowed;
+}
+small{
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+}
+.input-box .ng-touched.ng-invalid{
+    border: 1px solid rgb(216, 81, 81) !important;
+}
+button{
+  border-radius: 15px;
+}
+
+.toggle-container {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .toggle-input {
+    display: none;
+  }
+
+  .toggle-track {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc; /* Track color */
+    border-radius: 17px; /* Make it round */
+    cursor: pointer;
+  }
+
+  .toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    background-color: #2196F3; /* Thumb color when off */
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .toggle-input:checked + .toggle-track {
+    background-color: #a9d9f6; /* Track color when on */
+  }
+
+  .toggle-input:checked + .toggle-track .toggle-thumb {
+    transform: translateX(26px); /* Move thumb to the right when on */
+  }
+  #tog{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+
+  }
+  #tog span {
+    opacity: 0.5;
+    color: #707070;
+    font-size: 12px;
+  }
+  #tog  .togged{
+    /* color: black; */
+    opacity: 1;
+    font-size:17px;
+  }

@@ -1,0 +1,51 @@
+<h4>Student Perform Analysis</h4>
+<div class="container">
+  <div class="data-container">
+    <div class="left"></div>
+    <div class="right">
+      <div class="details">
+        <p>
+          Name: <span>{{ datavalues.student_name }}</span>
+        </p>
+        <p>
+          Email: <span>{{ datavalues.student_email }}</span>
+        </p>
+        <p>
+          Usn: <span>{{ datavalues.student_usn }}</span>
+        </p>
+        <p>
+          DOB: <span>{{ datavalues.student_dob }}</span>
+        </p>
+        <p>
+          Gender: <span>{{ datavalues.student_gender }}</span>
+        </p>
+        <p>
+          Password: <span>{{ datavalues.student_password }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="boxes">
+    <div class="dashboard-box">
+      <h2>Total Exams</h2>
+      <p>{{ total_exams }}</p>
+    </div>
+
+    <div class="dashboard-box">
+      <h2>Total Exams Assigned</h2>
+      <p>{{ assigned_exams }}</p>
+    </div>
+
+    <div class="dashboard-box">
+      <h2>Overall Performance</h2>
+      <p>{{percent}}%</p>
+    </div>
+  </div>
+
+  <div id="subject"></div>
+  <div class="horizontal">
+    <div id="perform"></div>
+    <div id="monthwise"></div>
+  </div>
+</div>

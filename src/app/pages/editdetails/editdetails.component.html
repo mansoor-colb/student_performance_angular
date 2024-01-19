@@ -1,0 +1,87 @@
+
+
+<section class="container">
+    <header>Student Details</header>
+    <form [formGroup]="studenteditobj" class="form" (ngSubmit)="dosubmit()">
+      <div class="input-box">
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter full name" required formControlName="student_name" />
+        <small *ngIf="studenteditobj.get('student_name').invalid && studenteditobj.get('student_name').touched">*Student name is a Required Field and should contain atleast 3 characters</small>
+      </div>
+      <div class="column">
+      <div class="input-box">
+        <label>Email Address</label>
+        <input type="text" placeholder="Enter email address" required formControlName="student_email" (input)="checkexistemail()" readonly/>
+        <small *ngIf="studenteditobj.get('student_email').invalid && studenteditobj.get('student_email').touched">*Student Email is a Required Field</small>
+      </div>
+      <div class="input-box">
+        <label>University Number</label>
+        <input type="text" placeholder="Enter University number" required  formControlName="student_usn" (input)="checkexistusn()"/>
+        <small *ngIf="studenteditobj.get('student_usn').invalid && studenteditobj.get('student_usn').touched">*Student USN is a Required Field and Should contain Minimun of 2 Digits</small>
+        <small *ngIf="stu_exist">*Student Already Exist</small>
+      </div>
+    </div>
+      <div class="column">
+
+        <div class="input-box">
+          <label>Class</label>
+          <input type="number" placeholder="Enter present class" required formControlName="student_class"/>
+          <small *ngIf="studenteditobj.get('student_class').invalid && studenteditobj.get('student_class').touched">*Student present  class is a Required Field</small>
+        </div>
+      
+        <div class="input-box">
+          <label>Birth Date</label>
+          <input [max]="maxDate.toISOString().split('T')[0]" type="date" placeholder="Enter birth date" required formControlName="student_dob"/>
+          <small *ngIf="studenteditobj.get('student_dob').invalid && studenteditobj.get('student_dob').touched">*Student Dob is a Required Field</small>
+        </div>
+      </div>
+      <div class="column" id="horizon">
+      <div class="gender-box">
+        <h3>Gender</h3>
+        <div class="gender-option">
+          <div class="gender">
+            <input type="radio" id="check-male" name="student_gender" checked value="male"formControlName="student_gender" />
+            <label for="check-male">Male</label>
+          </div>
+          <div class="gender">
+            <input type="radio" id="check-female" name="student_gender" value="female" formControlName="student_gender"/>
+            <label for="check-female">Female</label>
+          </div>
+          <small *ngIf="studenteditobj.get('student_gender').invalid && studenteditobj.get('student_gender').touched">*Student gender is a Required Field</small>
+        </div>
+      </div>
+      <button type="button" id="addex" (click)="addexam()">Add Exam <i class='bx bxs-message-square-add' ></i></button>
+    </div>
+      <div class="input-box address" formArrayName="student_exams">
+        <div id="sepinput" class="input-box" *ngFor="let item of studenteditobj.get('student_exams')['controls'] | keyvalue;let i = index" formGroupName="{{i}}">
+          <p class="exam_close">Exam {{i+1}} <i class='bx bx-x bx-rotate-90 exclose'(click)="removeexam(i)" ></i></p>
+          <div class="column">
+            <div class="input-box">
+              <label for="exm-sel">Select Exam</label>
+            <div class="select-box">
+              <input type="text" name="exam_id" id="" hidden formControlName="exam_id">
+              <select  formControlName="exam_name" (change)="update(i)" id="exm-sel">
+                <option hidden>Select Exam</option>
+                <option value={{itm.exam_name}} *ngFor="let itm of exam_data">{{itm.exam_name}}</option>
+              
+              </select>
+              <small *ngIf="studenteditobj.get('student_exams.' + i + '.exam_name').invalid && studenteditobj.get('student_exams.' + i + '.exam_name').touched">*Please select Exam</small>
+            </div>
+          </div>
+            <div class="input-box">
+              <label for="ex-marks">Enter Marks</label>
+            <input type="text" id="ex-marks"placeholder="Enter Marks Obtained" required  formControlName="exam_marks" (blur)="dynamic(i)"/>
+            <small *ngIf="studenteditobj.get('student_exams.' + i + '.exam_marks').invalid && studenteditobj.get('student_exams.' + i + '.exam_marks').touched">*Please Enter Marks</small>
+          </div>
+          <div class="input-box">
+            <label for="remks">Remarks</label>
+            <input id="remks" type="text" placeholder=""    readonly formControlName="exam_remarks"/>
+          </div>
+        </div>
+          
+        </div>
+
+      </div>
+      <button type="submit" [disabled]="studenteditobj.invalid || stu_exist"  >Submit</button>
+    </form>
+  </section>

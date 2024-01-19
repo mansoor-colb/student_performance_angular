@@ -1,0 +1,47 @@
+
+<section class="container">
+  <h3>Login Here</h3>
+  <form class="form" *ngIf="!isRegister">
+    <div class="input-box">
+    <label for="username">Username</label>
+    <input type="text" name ="userName" [(ngModel)]="loginObj.UserName" placeholder="Enter Email" id="username">
+    </div>
+
+    <div class="input-box">
+    <label for="password">Password</label>
+    <input type="password" name ="password" [(ngModel)]="loginObj.Password" placeholder="Enter Password" id="password">
+    </div>
+
+    <div class="input-box" id="tog">
+    <label class="toggle-container">
+      <input type="checkbox" class="toggle-input"  (change)="tog()">
+     
+      <div class="toggle-track">
+        <div class="toggle-thumb"> </div>
+      
+      </div>
+     
+    </label>
+    <span [class.togged]="togged">Login as Admin</span>
+  </div>
+
+    <button  (click)="onLogin()">Log In</button>
+  </form>
+
+  <!-- <form *ngIf="isRegister">
+    <h3>Register Here</h3>
+    <label for="username">Username</label>
+    <input type="text" name ="userName" [(ngModel)]="registerObj.UserName" placeholder="Email or Phone" id="username">
+  
+    <label for="password">Password</label>
+    <input type="password" name ="password" [(ngModel)]="registerObj.Password" placeholder="Password" id="password">
+  
+    <button style="color: black" (click)="onRegister()">Register</button>
+    <div class="social">
+      <div class="go" (click)="isRegister = !isRegister"> <i class="fab fa-google"></i>  Login</div>
+      
+    </div>
+  </form> -->
+</section>
+
+
