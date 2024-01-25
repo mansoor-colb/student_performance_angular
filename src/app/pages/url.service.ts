@@ -74,7 +74,7 @@ export class ExamService {
     }
     let result: any = {}
     for (let item in resu) {
-      result[`2024-0${item}`] = resu[item]
+      result[`2024-0${item}`] = Math.round(resu[item])
     }
 
 
@@ -166,11 +166,11 @@ for (let itemn of studentdata){
     let result: any = {}
     let result2: any = {}
     for (let item in resu) {
-      result[`2024-0${item}`] = resu[item]
+      result[`2024-0${item}`] = Math.round(resu[item])
     }
 
     for (let item in resufem) {
-      result2[`2024-0${item}`] = resufem[item]
+      result2[`2024-0${item}`] = Math.round(resufem[item])
     }
 
 

@@ -1,0 +1,15 @@
+<div class="landing-page">
+    <div *ngIf="sessionStatus === 'Token expired'" class="message expired">
+      Session Expired. Please login again.
+    </div>
+    <div *ngIf="sessionStatus === 'Invalid token'" class="message invalid">
+      Invalid Token. Please login again.
+    </div>
+    <div *ngIf="sessionStatus === 'Token not provided'" class="message none">
+      No Token provided. Please login.
+    </div>
+    <button *ngIf="sessionStatus !== 'none'" (click)="redirectToLogin()" class="login-button">
+        Login
+      </button>
+  </div>
+  

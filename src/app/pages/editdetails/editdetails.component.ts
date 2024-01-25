@@ -82,7 +82,17 @@ export class EditdetailsComponent implements OnInit {
 
       console.log(data)
       console.log(this.studenteditobj.value)
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
 
 
 
@@ -98,7 +108,17 @@ export class EditdetailsComponent implements OnInit {
       }
       console.log(this.exam_data)
 
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
   }
 
   update(index: any) {
@@ -215,7 +235,17 @@ export class EditdetailsComponent implements OnInit {
         }
         console.log(res)
 
-      })
+      },(error) => {
+        Swal.fire({
+    
+          icon: "error",
+          title: `opps!! Internal Server Error `,
+          showConfirmButton: false,
+          timer: 2500
+    
+        })
+    
+    })
     }
     else {
       Swal.fire({
@@ -267,7 +297,17 @@ export class EditdetailsComponent implements OnInit {
         this.stu_exist = false
       }
 
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
   }
 
 
@@ -285,7 +325,17 @@ export class EditdetailsComponent implements OnInit {
         this.stu_exist = false
       }
 
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
   }
 
 

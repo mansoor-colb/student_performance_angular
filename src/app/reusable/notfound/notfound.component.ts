@@ -1,15 +1,13 @@
-import { Component, OnInit, Input ,Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.css']
+  selector: 'app-notfound',
+  templateUrl: './notfound.component.html',
+  styleUrls: ['./notfound.component.css']
 })
-export class TabsComponent implements OnInit {
-
-
-  id:any;
+export class NotfoundComponent implements OnInit {
+id:any;
   constructor(private router:Router) {
     let str=localStorage.getItem("uid")
     if(str){
@@ -26,7 +24,5 @@ export class TabsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 
 }

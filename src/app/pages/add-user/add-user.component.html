@@ -72,7 +72,7 @@
               <div class="input-box">
                 <label for="ex-marks">Enter Marks</label>
               <input type="text" id="ex-marks"placeholder="Enter Marks Obtained" required  formControlName="exam_marks" (blur)="dynamic(i)"/>
-              <small *ngIf="studentobj.get('student_exams.' + i + '.exam_marks').invalid && studentobj.get('student_exams.' + i + '.exam_marks').touched">*Please Enter Marks</small>
+              <small *ngIf="studentobj.get('student_exams.' + i + '.exam_marks').invalid && studentobj.get('student_exams.' + i + '.exam_marks').touched">*Please Enter Marks Between 1-100</small>
             </div>
             <div class="input-box">
               <label for="remks">Remarks</label>

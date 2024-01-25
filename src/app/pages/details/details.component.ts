@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -24,7 +25,17 @@ filterval:any;
     //   // }
     //  }
 
-  })
+  },(error) => {
+    Swal.fire({
+
+      icon: "error",
+      title: `opps!! Internal Server Error `,
+      showConfirmButton: false,
+      timer: 2500
+
+    })
+
+})
   }
   constructor(private http: HttpClient,private fb: FormBuilder,) { 
 
@@ -50,7 +61,17 @@ filterval:any;
       //  }
       // }
  
-   })
+   },(error) => {
+    Swal.fire({
+
+      icon: "error",
+      title: `opps!! Internal Server Error `,
+      showConfirmButton: false,
+      timer: 2500
+
+    })
+
+})
 
   }
   act(id:any,status:any){
@@ -73,7 +94,17 @@ filterval:any;
       console.log(res)
 
 
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
 
   }
 }

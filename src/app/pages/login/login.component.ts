@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
   onLogin() {
     // alert(this.loginObj.Password)
     if (this.togged) {
+      try{
       this.http.post<any>("http://localhost:8771/signup", this.loginObj).subscribe(res => {
         if (res.status == 200) {
           // alert(`Login Succesfull as ${res.data[0].role}`)
@@ -68,7 +69,6 @@ export class LoginComponent implements OnInit {
 
             });
             setTimeout(() => {
-
               this.router.navigateByUrl('admin-dash');
             }, 1500);
           }
@@ -81,36 +81,47 @@ export class LoginComponent implements OnInit {
               timer: 1500
 
             });
-            // alert()
-
 
           }
 
         }
         else {
           Swal.fire({
-
             icon: "error",
             title: `No Admin Match for given Credientials`,
             showConfirmButton: false,
             timer: 1500
-
           });
           // alert("No Admin Match for given Credientials")
         }
         console.log(res)
-      })
+      },(error) => {
+        Swal.fire({
+
+          icon: "error",
+          title: `No Admin Match for given Credientials `,
+          showConfirmButton: false,
+          timer: 2500
+
+        });
+        
+        // You can perform additional error handling here, such as showing a user-friendly message.
+      }) } catch(err){
+   
+      }
     }
     else {
       console.log(this.loginObj)
 
-      this.http.post<any>("http://localhost:8771/signupstu", this.loginObj).subscribe(res => {
+      this.http.post<any>("http://localhost:8771/signupstu", this.loginObj ).subscribe(res => {
         console.log(res)
         if (res.status == 200) {
           if (res.data.val == "true") {
             // alert(`Login Succesfull as ${res.data.name}`)
             localStorage.removeItem("uid")
+            localStorage.removeItem("token")
             localStorage.setItem("uid", `${res.data.id}-${res.data.role}`)
+            localStorage.setItem("token", `${res.token}`)
             if (res.data.role == "stu") {
               Swal.fire({
 
@@ -164,37 +175,19 @@ export class LoginComponent implements OnInit {
           // alert("No Student Match for given Credientials")
         }
         // console.log(res)
-      })
+      },(error) => {
+        Swal.fire({
 
-    }
-    // debugger;
-    // this.http.post("http://localhost:61334/api/Registration/Login", this.loginObj).subscribe((response: any)=>{
-    //   debugger;
-    //   if(response.result) {
-    //     alert(response.message)
-    //     this.router.navigateByUrl('way2user-dashboard');
-    //   } else {
-    //     alert(response.message)
-    //   }
-    // })
+          icon: "error",
+          title: `opps!! This time issue is  from us `,
+          showConfirmButton: false,
+          timer: 2500
 
-    //way 1
-    // if(this.loginObj.userName == 'user123' && this.loginObj.password =='user@123') {
-    //   localStorage.setItem('role','user');
-    //   this.router.navigateByUrl('user-dashboard');
-    // } else if (this.loginObj.userName == 'admin' && this.loginObj.password =='admin@123') {
-    //   localStorage.setItem('role','admin');
-    //   this.router.navigateByUrl('admin-dash');
-    // }
-    //way 2
+        })
 
-    // if(this.loginObj.userName == 'user123' && this.loginObj.password =='user@123') {
-    //   localStorage.setItem('role','user');
-    //   this.router.navigateByUrl('way2user-dashboard');
-    // } else if (this.loginObj.userName == 'admin' && this.loginObj.password =='admin@123') {
-    //   localStorage.setItem('role','admin');
-    //   this.router.navigateByUrl('way2admin-dash');
-    // }
+    })
+
+
   }
-
+  }
 }

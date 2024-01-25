@@ -1,0 +1,23 @@
+.not-found-container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 8rem;
+    color: #e74c3c;
+    margin: 0;
+}
+
+p {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: block;
+    margin-top: 20px;
+}

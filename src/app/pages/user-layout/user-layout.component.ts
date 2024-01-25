@@ -43,6 +43,7 @@ export class UserLayoutComponent implements OnInit {
   
     logout(){
       localStorage.removeItem("uid")
+      localStorage.removeItem("token")
        this.router.navigateByUrl('login');
     }
 

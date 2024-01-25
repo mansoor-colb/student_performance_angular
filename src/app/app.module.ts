@@ -4,48 +4,49 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddUserComponent } from './pages/add-user/add-user.component';
-import { UserListComponent } from './pages/user-list/user-list.component';
+
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
-import { RolesComponent } from './pages/roles/roles.component';
-import { EmployeeComponent } from './pages/employee/employee.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminLayoutComponent } from './pages/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
-import { VoidTableComponent } from './reusable/void-table/void-table.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TabsComponent } from './reusable/tabs/tabs.component';
-import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
-import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
 import { ExamComponent } from './pages/exam/exam.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DisplaystudentComponent } from './pages/displaystudent/displaystudent.component';
 import { EditdetailsComponent } from './pages/editdetails/editdetails.component';
+import { NotfoundComponent } from './reusable/notfound/notfound.component';
+import { AuthInterceptor } from './auth.interceptor';
+import { LandingpageComponent } from './pages/landingpage/landingpage.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AddUserComponent,
-    UserListComponent,
+    // UserListComponent,
     UserDashboardComponent,
     AdminDashboardComponent,
-    RolesComponent,
-    EmployeeComponent,
+    // RolesComponent,
+    // EmployeeComponent,
     LoginComponent,
     AdminLayoutComponent,
     UserLayoutComponent,
-    HomeLayoutComponent,
-    VoidTableComponent,
+    // HomeLayoutComponent,
+    // VoidTableComponent,
     TabsComponent,
-    QuizAppComponent,
-    StepperCrudComponent,
+    // QuizAppComponent,
+    // StepperCrudComponent,
     ExamComponent,
     DetailsComponent,
     DisplaystudentComponent,
     EditdetailsComponent,
+    NotfoundComponent,
+    LandingpageComponent,
+  
     
     
   ],
@@ -56,7 +57,11 @@ import { EditdetailsComponent } from './pages/editdetails/editdetails.component'
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

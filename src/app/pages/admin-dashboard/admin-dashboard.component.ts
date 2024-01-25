@@ -85,18 +85,19 @@ export class AdminDashboardComponent implements OnInit {
                 borderWidth: 2
               },
               label: {
-                show: false,
-                position: 'center'
+                show:true,
+                position:"inside"
               },
               emphasis: {
                 label: {
-                  show: true,
-                  fontSize: 40,
+                  show:true,
+                  fontSize: 25,
                   fontWeight: 'bold'
+                  // ,position:'outside'
                 }
               },
               labelLine: {
-                show: false
+                show:false
               },
               data:this.piedata
             }
@@ -210,7 +211,17 @@ export class AdminDashboardComponent implements OnInit {
         // alert("Some arror occured")
       }
 
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
   }
 
 
@@ -257,8 +268,8 @@ export class AdminDashboardComponent implements OnInit {
           }
         }
       }
-      this.passarr.push(100/(pass+fail)*pass)
-      this.failarr.push(100/(pass+fail)*fail)
+      this.passarr.push(Math.round(100/(pass+fail)*pass))
+      this.failarr.push(Math.round(100/(pass+fail)*fail))
       result.push({value:Math.ceil(sum/count),name:exam.exam_name})
       if(exam.exam_name=="physics"){
 

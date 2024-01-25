@@ -23,6 +23,7 @@ import { BarChart, PieChart, PieSeriesOption } from 'echarts/charts';
 import { LabelLayout } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import { UniversalTransition } from 'echarts/features';
+import Swal from 'sweetalert2';
 
 echarts.use([
   TitleComponent,
@@ -129,7 +130,22 @@ export class UserDashboardComponent implements OnInit {
 
   loadform() {
     this.http.post<any>("http://localhost:8771/getstudentexam", { id: this.user_id }).subscribe(async data => {
-      //  console.log(data)
+       console.log(data)
+      if(data.status==0){
+        Swal.fire({
+          icon:"error",
+          title:"Details Not Found",
+          timer:2000
+
+
+        })
+        this.router.navigateByUrl("notfound")
+      }
+      else if(data.status==201){
+        localStorage.removeItem("token")
+        localStorage.setItem("token",data.token)
+        alert("Token refreshed")
+      }
 
       this.datavalues = {
         student_name: data.data1.student_name,
@@ -159,12 +175,12 @@ let maxtotal=0
       for (let item of this.datavalues.student_exams) {
         this.highestarr.push(this.dict[item.exam_name])
         let exm: any = this.examvalues.find((e: { exam_name: string; }) => e.exam_name === item.exam_name)
-        this.minimumarr.push(exm.exam_min)
-        this.scoredarr.push((item.exam_marks / exm.exam_max) * 100)
+        this.minimumarr.push(Math.round(exm.exam_min))
+        this.scoredarr.push(Math.round((item.exam_marks / exm.exam_max) * 100))
         this.subjectarr.push(item.exam_name)
         percentage+=parseInt(item.exam_marks,10)
         maxtotal+=parseInt(exm.exam_max,10)
-        this.sub_marks.push({"value":((item.exam_marks / exm.exam_max) * 100),"name":item.exam_name})
+        this.sub_marks.push({"value":Math.round(((item.exam_marks / exm.exam_max) * 100)),"name":item.exam_name})
       }
 
       console.log(percentage)
@@ -287,7 +303,17 @@ let maxtotal=0
         ]
       })
       console.log(this.dict)
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Some thing looks wrong `,
+        showConfirmButton: false,
+        timer: 1500
+  
+      })
+  
+  })
 
 
 

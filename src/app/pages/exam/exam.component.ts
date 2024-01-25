@@ -45,7 +45,17 @@ export class ExamComponent implements OnInit {
         }
         console.log(res)
   
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
     }
     else{
       Swal.fire({
@@ -74,7 +84,17 @@ export class ExamComponent implements OnInit {
         this.exam_exist=false
       }
 
-  })
+  },(error) => {
+    Swal.fire({
+
+      icon: "error",
+      title: `opps!! Internal Server Error `,
+      showConfirmButton: false,
+      timer: 2500
+
+    })
+
+})
   }
 
 }

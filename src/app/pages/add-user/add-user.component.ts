@@ -45,7 +45,7 @@ export class AddUserComponent implements OnInit {
         new FormGroup({
           exam_id:new FormControl(null,[Validators.required]),
           exam_name:new FormControl(null,[Validators.required]),
-          exam_marks:new FormControl(null,[Validators.required]),
+          exam_marks:new FormControl(null,[Validators.required,Validators.min(1),Validators.max(100)]),
           exam_remarks:new FormControl("",[Validators.required])
         })
       ])
@@ -67,7 +67,17 @@ export class AddUserComponent implements OnInit {
       }
       console.log(this.exam_data)
   
-  })
+  },(error) => {
+    Swal.fire({
+
+      icon: "error",
+      title: `opps!! Internal Server Error `,
+      showConfirmButton: false,
+      timer: 2500
+
+    })
+
+})
   }
 
 
@@ -123,7 +133,7 @@ export class AddUserComponent implements OnInit {
       control.push(new FormGroup({
         exam_id:new FormControl(null,[Validators.required]),
         exam_name:new FormControl(null,[Validators.required]),
-        exam_marks:new FormControl(null,[Validators.required,Validators.min(1)]),
+        exam_marks:new FormControl(null,[Validators.required,Validators.min(1),Validators.max(100)]),
         exam_remarks:new FormControl(null,[Validators.required])
       }))
       this.addedexam_count+=1
@@ -182,7 +192,17 @@ export class AddUserComponent implements OnInit {
         }
         console.log(res)
   
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
     }
     else{
       Swal.fire({
@@ -234,7 +254,17 @@ export class AddUserComponent implements OnInit {
         this.stu_exist=false
       }
 
-  })
+  },(error) => {
+    Swal.fire({
+
+      icon: "error",
+      title: `opps!! Internal Server Error `,
+      showConfirmButton: false,
+      timer: 2500
+
+    })
+
+})
  
   }
 
@@ -250,7 +280,17 @@ export class AddUserComponent implements OnInit {
         this.stu_existusn=false
       }
 
-  })
+  },(error) => {
+    Swal.fire({
+
+      icon: "error",
+      title: `opps!! Internal Server Error `,
+      showConfirmButton: false,
+      timer: 2500
+
+    })
+
+})
   }
 
 }

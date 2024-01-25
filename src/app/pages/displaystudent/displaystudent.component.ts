@@ -23,6 +23,7 @@ import { BarChart, PieChart, PieSeriesOption } from 'echarts/charts';
 import { LabelLayout } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 import { UniversalTransition } from 'echarts/features';
+import Swal from 'sweetalert2';
 
 echarts.use([
   TitleComponent,
@@ -220,6 +221,8 @@ console.log(maxtotal)
         },
         legend: {
           top: 'bottom'
+        },  label: {
+          formatter: '{b}: {d}%'
         },
         toolbox: {
           show: true,
@@ -278,7 +281,17 @@ console.log(maxtotal)
         ]
       })
       console.log(this.dict)
-    })
+    },(error) => {
+      Swal.fire({
+  
+        icon: "error",
+        title: `opps!! Internal Server Error `,
+        showConfirmButton: false,
+        timer: 2500
+  
+      })
+  
+  })
 
 
 

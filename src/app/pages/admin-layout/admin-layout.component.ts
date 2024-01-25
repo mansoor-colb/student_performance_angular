@@ -43,6 +43,7 @@ switch(cur){
 
   logout(){
     localStorage.removeItem("uid")
+    localStorage.removeItem("token")
      this.router.navigateByUrl('login');
   }
 

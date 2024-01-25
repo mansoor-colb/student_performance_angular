@@ -1,0 +1,43 @@
+.landing-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .message {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .expired {
+    background-color: #ff6961; /* Light red */
+  }
+  
+  .invalid {
+    background-color: #f4c542; /* Yellow */
+  }
+  
+  .none {
+    background-color: #add8e6; /* Light blue */
+  }
+  
+  .login-button {
+    background-color: #4caf50; /* Green */
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
