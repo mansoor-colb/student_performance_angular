@@ -1,10 +1,10 @@
 <!-- search-bar.component.html -->
 
 <div class="search-container">
-  <div class="search-icon" (click)="toggleSearch()">
+  <div class="search-icon" (click)="toggleSearch(filval)">
     <i class="fa fa-search"></i>
   </div>
-  <input [class.act]="isSearchOpen" #filval type="text" placeholder="Search..." (input)="filter(filval.value)" (blur)="toggleSearch()">
+  <input [class.act]="isSearchOpen" #filval type="text" placeholder="Search..." (input)="debounce(filval.value)" (blur)="toggleSearch(filval)">
 </div>
 
 <table>
@@ -19,13 +19,14 @@
       </tr>
     </thead>
     <tbody>
+      <p *ngIf="dummy">Nothing To show</p>
       <tr *ngFor="let item of studentdata ;let i = index" >
         <td>{{i+1}}</td>
         <td [routerLink]="['/displaydetails',item.student_id]">{{item.student_name}}</td>
         <td>{{item.student_email}}</td>
         <td>{{item.student_usn}}</td>
-        <td><button [routerLink]="['/editstudetails',item.student_id]">Edit</button></td>
-        <td><button (click)="act(item.student_id,item.isactive)"  [ngClass]="{'active': item.isactive=='true', 'deactive': item.isactive=='false'}">{{ item.isactive=='true' ? 'Deactivate':'Activate'  }}</button></td>
+        <td><button  [routerLink]="['/editstudetails',item.student_id]">Edit</button></td>
+        <td><button class="actde" (click)="act(item.student_id,item.isactive)"  [ngClass]="{'active': item.isactive=='true', 'deactive': item.isactive=='false'}">{{ item.isactive=='true' ? 'Deactivate':'Activate'  }}</button></td>
       </tr>
       
       <!-- Add more rows as needed -->

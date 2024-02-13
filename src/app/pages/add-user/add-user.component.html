@@ -6,7 +6,7 @@
         <div class="input-box">
           <label>Full Name</label>
           <input type="text" placeholder="Enter full name" required formControlName="student_name" />
-          <small *ngIf="studentobj.get('student_name').invalid && studentobj.get('student_name').touched">*Student name is a Required Field and should contain atleast 3 characters</small>
+          <small *ngIf="studentobj.get('student_name').invalid && studentobj.get('student_name').touched">*Student name is a Required Field and should contain atleast 3 Alphabetic characters</small>
         </div>
         <div class="column">
         <div class="input-box">
@@ -27,7 +27,7 @@
           <div class="input-box">
             <label>Class</label>
             <input type="number" placeholder="Enter present class" required formControlName="student_class"/>
-            <small *ngIf="studentobj.get('student_class').invalid && studentobj.get('student_class').touched">*Student present  class is a Required Field</small>
+            <small *ngIf="studentobj.get('student_class').invalid && studentobj.get('student_class').touched">*Student present  class is a Required Field and between 1-10</small>
           </div>
         
           <div class="input-box">
@@ -71,7 +71,7 @@
             </div>
               <div class="input-box">
                 <label for="ex-marks">Enter Marks</label>
-              <input type="text" id="ex-marks"placeholder="Enter Marks Obtained" required  formControlName="exam_marks" (blur)="dynamic(i)"/>
+              <input  type="number" id="ex-marks"placeholder="Enter Marks Obtained" required  formControlName="exam_marks" (blur)="dynamic(i)"/>
               <small *ngIf="studentobj.get('student_exams.' + i + '.exam_marks').invalid && studentobj.get('student_exams.' + i + '.exam_marks').touched">*Please Enter Marks Between 1-100</small>
             </div>
             <div class="input-box">

@@ -312,6 +312,14 @@ let maxtotal=0
         timer: 1500
   
       })
+      if(error.error.data=="Token not provided"){
+        this.router.navigateByUrl(`invalid/${error.error.data}`);
+      }
+    //  console.log(error)
+      // setTimeout(() => {
+        
+      //   this.router.navigateByUrl("notfound")
+      // }, 1500);
   
   })
 

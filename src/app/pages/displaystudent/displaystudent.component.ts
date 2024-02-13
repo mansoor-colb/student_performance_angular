@@ -117,7 +117,7 @@ export class DisplaystudentComponent implements OnInit {
   }
 
   loadform() {
-    this.http.post<any>("http://localhost:8771/getstudentexam", { id: this.user_id }).subscribe(async data => {
+    this.http.post<any>("http://localhost:8771/getstudentexam", { id: this.user_id,admin:1 }).subscribe(async data => {
       this.datavalues = {
         student_name: data.data1.student_name,
         student_email: data.data1.student_email,

@@ -144,6 +144,9 @@ export class AdminDashboardComponent implements OnInit {
             {
               name: 'Passing Percentage',
               type: 'bar',
+              itemStyle: {
+                color: '#36c526' // Specify your custom color here
+              },
               data: this.passarr,
   
             },
@@ -151,6 +154,9 @@ export class AdminDashboardComponent implements OnInit {
               name: 'Failed Percentage',
               type: 'bar',
               data:this.failarr,
+              itemStyle: {
+                color: '#791344' // Specify your custom color here
+              }
   
             }
           ]

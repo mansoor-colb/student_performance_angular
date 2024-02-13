@@ -10,13 +10,14 @@ export class NotfoundComponent implements OnInit {
 id:any;
   constructor(private router:Router) {
     let str=localStorage.getItem("uid")
-    if(str){
+    let token=localStorage.getItem("token")
+    if(str && (token!=null)){
       this.id=str.split("-")[0]
     
 
     }
     else{
-      alert("Please Login!!")
+      // alert("Please Login!!")
       router.navigateByUrl("login")
     
     }

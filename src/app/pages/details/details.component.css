@@ -98,3 +98,7 @@ input.act {
   visibility: visible;
   transform: translateX(0);
 }
+.actde{
+  width: 115px;
+  min-width:35px
+}

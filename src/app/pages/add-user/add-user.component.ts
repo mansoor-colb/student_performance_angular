@@ -35,7 +35,7 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentobj=this.fb.group({
-      student_name:new FormControl(null,[Validators.required,Validators.minLength(3)]),
+      student_name:new FormControl(null,[Validators.required,Validators.minLength(3),Validators.pattern('^[a-zA-Z ]+$')]),
       student_email:new FormControl(null,[Validators.required,Validators.email]),
       student_usn:new FormControl(null,[Validators.required,Validators.minLength(2)]),
       student_dob:new FormControl(null,[Validators.required]),

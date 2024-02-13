@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
   isRegister: boolean = false;
   constructor(private router: Router, private http: HttpClient) {
     let islogg = localStorage.getItem("uid")
-    if (islogg) {
+    let istoken = localStorage.getItem("token")
+    if (islogg && istoken) {
       const parts = islogg.split('-');
       if (parts[1] == "Admin") {
         this.router.navigateByUrl('admin-dash');

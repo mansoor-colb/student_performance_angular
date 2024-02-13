@@ -16,8 +16,8 @@ body {
 }
 .container {
   position: relative;
-  /* max-width: 700px; */
-  width: 60vw;
+  max-width: 1000px;
+  width: 80vw;
   background: #fff;
   padding: 25px;
   border-radius: 8px;
