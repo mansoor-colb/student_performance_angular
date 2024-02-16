@@ -172,8 +172,18 @@ for (let itemn of studentdata){
     for (let item in resufem) {
       result2[`2024-0${item}`] = Math.round(resufem[item])
     }
+    const entries1:[string, any][] = Object.entries(result);
+    const entries2:[string, any][] = Object.entries(result2);
+    
+    // Iterate through both arrays simultaneously
+    for (let i = 0; i < Math.min(entries1.length, entries2.length); i++) {
+      const [key1, value1] = entries1[i]; // Destructure key-value pairs for obj1
+      const [key2, value2] = entries2[i];
 
+      result[key1]=Math.round((value1/(value1+value2)*100))
+      result2[key2]=Math.round(value2/(value1+value2)*100)
 
+    }
     console.log(result2)
     console.log(result)
     // console.log(count)

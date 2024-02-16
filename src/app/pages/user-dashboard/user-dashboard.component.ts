@@ -185,7 +185,7 @@ let maxtotal=0
 
       console.log(percentage)
       console.log(maxtotal)
-      this.percent=percentage/maxtotal*100
+      this.percent=Math.round(percentage/maxtotal*100)
       this.graphplot("subject", {
         title: {
           text: 'Marks vs Subjects',
@@ -245,6 +245,9 @@ let maxtotal=0
         },
         legend: {
           top: 'bottom'
+        },tooltip: { // Tooltip configuration
+          trigger: 'item', // Trigger type: when hovering over each item
+          formatter: '{a} <br/>{b}: {d}%' // Format of the tooltip content
         },
         toolbox: {
           show: true,

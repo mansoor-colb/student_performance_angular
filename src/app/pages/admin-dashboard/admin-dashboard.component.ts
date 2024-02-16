@@ -107,11 +107,13 @@ export class AdminDashboardComponent implements OnInit {
 
         this.graphplot("subjectpass", {
           title: {
-            text: 'Percentage vs Subjects',
+            text: 'Subject Analysis ',
             // subtext: 'Subject wise Fail,Pass perecntage',
-            top:"5%",
+            subtext: 'Pass and Failure',
+   
+           top:"-1%",
             
-            left:"left"
+            left:"center"
           },
           tooltip: {
             trigger: 'axis'
@@ -122,41 +124,55 @@ export class AdminDashboardComponent implements OnInit {
             show: true,
             feature: {
               dataView: { show: true, readOnly: false },
-              magicType: { show: true, type: ['line', 'bar'] },
+         
               restore: { show: true },
               saveAsImage: { show: true }
             }
           },
           calculable: true,
-          xAxis: [
+          yAxis: [
             {
+            nameGap: 5,
               type: 'category',
+              name:"Subject",
               data: this.subjectsarr
             }
           ],
-          yAxis: [
+          xAxis: [
             {
-              type: 'value',
-              max: 100, min: 0
+              type: 'value', nameGap: 45,
+              max: 100, min: 0,gridIndex:0,nameLocation: 'middle'
+              ,name: 'Percentage (%)' ,axisLine: {
+                show: true  
+              }
             }
           ],
           series: [
-            {
-              name: 'Passing Percentage',
-              type: 'bar',
-              itemStyle: {
-                color: '#36c526' // Specify your custom color here
-              },
-              data: this.passarr,
-  
-            },
+        
             {
               name: 'Failed Percentage',
               type: 'bar',
+              stack: 'total',
               data:this.failarr,
               itemStyle: {
-                color: '#791344' // Specify your custom color here
+                borderColor: '#000', // Border color
+                borderWidth: 1,
+                barBorderRadius: [15, 15, 15, 15],
+                color: '#F44336' // Specify your custom color here
               }
+  
+            },    {
+              name: 'Passing Percentage',
+              type: 'bar',
+              stack: 'total',
+              itemStyle: {
+                // shadowColor: 'rgba(0, 0, 0, 0.3)',
+                borderColor: '#fff', // Border color
+                borderWidth: 2,
+                barBorderRadius:[0, 15, 15, 0],
+                color: '#4CAF50' // Specify your custom color here
+              },
+              data: this.passarr,
   
             }
           ]
@@ -182,8 +198,10 @@ export class AdminDashboardComponent implements OnInit {
           Object.values(this.girlsmonthy),
         ]
       },
-      xAxis: { type: 'category' },
-      yAxis: { gridIndex: 0,max:100 },
+      xAxis: { type: 'category' ,name: 'Month',nameLocation: 'middle', nameGap: 45,},
+      yAxis: { gridIndex: 0,max:100 ,name: 'Percentage (%)' ,axisLine: {
+        show: true // Display line on the y-axis
+      }},
   
       series: [
         {
@@ -244,29 +262,31 @@ export class AdminDashboardComponent implements OnInit {
     }
     let result:any = []
     let sum,pass,fail;
-    let count
+    let count,cc
     console.log(this.allExamsArr)
+
     console.log(this.allStudentArr)
     for (let exam of this.allExamsArr) {
       this.subjectsarr.push(exam.exam_name)
       
       sum=0,pass=0,fail=0
-      count=0
+      count=0,cc=0
       for (let item of this.allStudentArr) {
         
         for (let item2 of item.student_exams) {
           if(item2.exam_name==exam.exam_name){
             sum+=parseInt(item2.exam_marks,10)
-            count++
+            count+=parseInt(exam.exam_max,10)
+            cc++
             
            
             if( parseInt(item2.exam_marks,10)>=parseInt(exam.exam_min,10)){
               pass+=1
-              if(exam.exam_name=="physics"){
-                console.log(item2.exam_marks)
-                console.log(exam.exam_min)
-                console.log(item2.exam_marks>=exam.exam_min)
-              }
+              // if(exam.exam_name=="physics"){
+              //   console.log(item2.exam_marks)
+              //   console.log(exam.exam_min)
+              //   console.log(item2.exam_marks>=exam.exam_min)
+              // }
             }
             else{
               fail+=1
@@ -276,16 +296,33 @@ export class AdminDashboardComponent implements OnInit {
       }
       this.passarr.push(Math.round(100/(pass+fail)*pass))
       this.failarr.push(Math.round(100/(pass+fail)*fail))
-      result.push({value:Math.ceil(sum/count),name:exam.exam_name})
-      if(exam.exam_name=="physics"){
+      console.log(exam.exam_name,sum,count,(sum/count),cc)
+      result.push({value:Math.round((100*sum/count)/cc),name:exam.exam_name})
+      console.log(result)
+    
 
-        console.log(pass)
-        console.log(fail)
-      }
+     // Output: 15
+      
+  
     }
 console.log(result)
+// console.log(normalizationparm)
 console.log(this.passarr)
 console.log(this.failarr)
+let normalize=0
+for (let it in result) {
+  normalize+=Math.round(result[it].value)
+}
+// let normalizationparm: number = result.reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);
+console.log(normalize)
+for (let it in result) {
+
+  result[it].value=(Math.round(100/normalize*result[it].value))
+
+}
+// let su: number = result.reduce((accumulator: number, currentValue: number) => accumulator + currentValue, 0);
+      
+console.log(result);
     return result
   }
 }
